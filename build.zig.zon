@@ -1,0 +1,26 @@
+// SPDX-FileCopyrightText: © 2025 Mark Delk <jethrodaniel@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
+.{
+    .name = "mruby",
+    .version = "0.0.0",
+    .paths = .{
+        "src",
+        "build.zig",
+        "build.zig.zon",
+    },
+    .dependencies = .{
+        .mruby = .{
+            .url = "git+https://github.com/jethrodaniel/mruby?ref=fork#f760a5cea5540dd502aeaa9daf05e25b11fe8655",
+            .hash = "122085c457dfb74a1b6d62d290c80e71f86885c41c4a92d2f409fd0d07d391d4d6fb",
+        },
+        .macos_cctools = .{
+            .url = "git+https://github.com/apple-oss-distributions/cctools#cctools-1010.6",
+            .hash = "1220819e38328c2e2735d697e955fb2495eddd3d8a42ff2dd0312fd698f97f93f290",
+        },
+        .linenoise = .{
+            .path = "build/linenoise",
+        },
+    },
+}
