@@ -12,7 +12,7 @@ Build [mruby](https://github.com/mruby/mruby) using [zig](https://ziglang.org) (
 
 > Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.
 >
-> - Jeff Goldblum
+> --- Jeff Goldblum
 
 This project builds MRuby from source, only using Zig.
 
@@ -121,7 +121,7 @@ zig build -Doptimize=ReleaseFast -Dtarget=x86_64-linux-gnu
 
 See the `example-zig` step in [build.zig](build.zig), and [src/example.zig](src/example.zig).
 
-TODO: document creating and using custom gems
+TODO: document creating and using custom gems, using only a subset of the standard library, etc
 
 ## Contributing
 
