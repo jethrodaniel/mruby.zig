@@ -26,22 +26,81 @@ This means we emulate MRuby's non-trivial build process entirely in Zig.
 
 ## What does work
 
-TODO
+Pretty much everything else.
+
+### Command line tools and examples
 
 ```
-zig build mirb
-zig build mruby
-zig build mrdb
+$ zig build -h
+Usage: /path/to/zig build [steps] [options]
 
-# etc, see `zig build -h` or the `build.zig`
+Steps:
+  install (default)            Copy build artifacts to prefix path
+  uninstall                    Remove build artifacts from prefix path
+  mrbc                         Run mrbc
+  host-mrbc                    Run host-mrbc
+  mruby                        Run mruby
+  mirb                         Run mirb
+  mrdb                         Run mrdb
+  mruby-strip                  Run mruby-strip
+  mrbtest                      Run mrbtest
+  example-c                    Run src/example.c
+  example-rb                   Run src/example.rb
+  example-zig                  Run src/example.zig
 ```
 
-Building for other targets - e.g, on Linux
+For example, to run the MRuby tests
 
 ```
-zig build -Dtarget=x86_64-macos-none -p macos
-zig build -Dtarget=x86_64-linux-musl -p musl
+zig build -Doptimize=ReleaseFast
+
+# or just `zig build mrbtest` directly
+./zig-out/bin/mrbtest
 ```
+```
+mrbtest - Embeddable Ruby Test
+
+...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+  Total: 1647
+     OK: 1647
+     KO: 0
+  Crash: 0
+Warning: 0
+   Skip: 0
+   Time: 1.07 seconds
+
+```
+
+To use `mirb`, `mruby`, etc:
+
+```
+./zig-out/bin/mruby -v
+mruby 3.3.0 (2024-02-14)
+
+$ ./zig-out/bin/mirb
+mirb - Embeddable Interactive Ruby Shell
+
+> MRUBY_VERSION
+ => "3.3.0"
+```
+
+### Cross compilation
+
+Linux/Mac are the only targets currently supported, but support for others shouldn't be difficult.
+
+```
+zig build -Doptimize=ReleaseFast -Dtarget=x86_64-macos-none
+zig build -Doptimize=ReleaseFast -Dtarget=x86_64-linux-musl
+zig build -Doptimize=ReleaseFast -Dtarget=x86_64-linux-gnu
+```
+
+### Using in a Zig project
+
+TODO: document this
+
+## Contributing
+
+Bug reports and pull requests are welcome at https://github.com/jethrodaniel/mruby.zig
 
 ## License
 
