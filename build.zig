@@ -1041,6 +1041,8 @@ pub fn build(b: *std.Build) !void {
 
     for ([_]*std.Build.Step.Compile{
         mruby_lib,
+        mrbc_exe,
+        host_mrbc_exe,
         mirb_exe,
         mruby_exe,
         mrdb_exe,
