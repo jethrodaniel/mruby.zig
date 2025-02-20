@@ -113,7 +113,6 @@ pub fn build(b: *std.Build) !void {
         \\  {"name": "mruby_numeric_ext"},
         \\  {"name": "mruby_object_ext"},
         \\  {"name": "mruby_pack"},
-        \\  {"name": "mruby_print"},
         \\  {"name": "mruby_random"},
         \\  {"name": "mruby_range_ext"},
         \\  {"name": "mruby_set"},
@@ -1439,12 +1438,6 @@ const builtin_gems = [_]Mgem{
         .name = "mruby_pack",
         .srcs = &.{"mrbgems/mruby-pack/src/pack.c"},
         .test_rbfiles = &.{"mrbgems/mruby-pack/test/pack.rb"},
-    },
-    Mgem{
-        .name = "mruby_print",
-        .srcs = &.{"mrbgems/mruby-print/src/print.c"},
-        .rbfiles = &.{"mrbgems/mruby-print/mrblib/print.rb"},
-        .test_rbfiles = &.{}, // TODO: spec coverage
     },
     Mgem{
         .name = "mruby_proc_binding",

@@ -12,8 +12,8 @@
     },
     .dependencies = .{
         .mruby = .{
-            .url = "git+https://github.com/jethrodaniel/mruby?ref=fork#f760a5cea5540dd502aeaa9daf05e25b11fe8655",
-            .hash = "122085c457dfb74a1b6d62d290c80e71f86885c41c4a92d2f409fd0d07d391d4d6fb",
+            .url = "git+https://github.com/jethrodaniel/mruby?ref=fork#49cb703c04c0b51bca132416f31edeae0f7dcf80",
+            .hash = "122030a914b8c7edd7728a05fb7546013e5413062edfa27e19fda882808a496f3369",
         },
         .macos_cctools = .{
             .url = "git+https://github.com/apple-oss-distributions/cctools#cctools-1021.4",
