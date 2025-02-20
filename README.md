@@ -12,26 +12,45 @@ Build [mruby](https://github.com/mruby/mruby) using [zig](https://ziglang.org) (
 
 > Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.
 >
-> Jeff Goldblum
+> - Jeff Goldblum
 
-This project builds MRuby entirely from source, only using Zig.
+This project builds MRuby from source, only using Zig.
 
-This means we emulate MRuby's non-trivial build process entirely in Zig.
+This means we emulate MRuby's non-trivial Rake-based build process entirely in Zig.
 
-## What doesn't work
+## Issues
 
-- non-standard library gems that use any custom Ruby logic in their `mrbgem.rake`
-- preallocation of symbols (this depends on Ruby regex)
-- `mruby.zig` in transitive Zig dependencies (just use it globally in one package for now)
+- Non-standard library gems that use any Ruby logic in their `mrbgem.rake` files aren't supported
+- Symbol preallocation isn't supported (this depends on Ruby regex to create the C files)
+- Using `mruby.zig` in transitive Zig dependencies will likely cause issue (just use it globally in one package for now)
+- We have to fork MRuby just to add back `mrbgems/mruby-compiler/core/y.tab.c`
 
-## What does work
+## Usage
 
-Pretty much everything else.
+### Command line tools
 
-### Command line tools and examples
+To install all the CLI programs:
 
 ```
-$ zig build -h
+zig build
+```
+```
+$ tree zig-out/bin/
+zig-out/bin/
+├── host-mrbc
+├── mirb
+├── mrbc
+├── mrbtest
+├── mruby
+└── mruby-strip
+```
+
+See `zig build -h` for information about everything available:
+
+```
+zig build -h
+```
+```
 Usage: /path/to/zig build [steps] [options]
 
 Steps:
@@ -49,13 +68,10 @@ Steps:
   example-zig                  Run src/example.zig
 ```
 
-For example, to run the MRuby tests
+To run MRuby's tests:
 
 ```
-zig build -Doptimize=ReleaseFast
-
-# or just `zig build mrbtest` directly
-./zig-out/bin/mrbtest
+zig build mrbtest
 ```
 ```
 mrbtest - Embeddable Ruby Test
@@ -74,14 +90,21 @@ Warning: 0
 To use `mirb`, `mruby`, etc:
 
 ```
-./zig-out/bin/mruby -v
-mruby 3.3.0 (2024-02-14)
-
-$ ./zig-out/bin/mirb
+$ zig build mirb
 mirb - Embeddable Interactive Ruby Shell
 
 > MRUBY_VERSION
  => "3.3.0"
+```
+
+### Examples
+
+To run the examples:
+
+```
+zig build example-c
+zig build example-rb
+zig build example-zig
 ```
 
 ### Cross compilation
@@ -96,7 +119,9 @@ zig build -Doptimize=ReleaseFast -Dtarget=x86_64-linux-gnu
 
 ### Using in a Zig project
 
-TODO: document this
+See the `example-zig` step in [build.zig](build.zig), and [src/example.zig](src/example.zig).
+
+TODO: document creating and using custom gems
 
 ## Contributing
 
