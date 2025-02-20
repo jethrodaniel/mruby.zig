@@ -1416,6 +1416,7 @@ const builtin_gems = [_]Mgem{
         .srcs = &.{"mrbgems/mruby-object-ext/src/object.c"},
         .rbfiles = &.{"mrbgems/mruby-object-ext/mrblib/object.rb"},
         .test_rbfiles = &.{"mrbgems/mruby-object-ext/test/object.rb"},
+        .test_srcs = &.{"mrbgems/mruby-object-ext/test/object-ext.c"},
     },
     Mgem{
         .name = "mruby_objectspace",
