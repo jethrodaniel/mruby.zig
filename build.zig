@@ -239,7 +239,7 @@ pub fn build(b: *std.Build) !void {
 
             const run = b.addRunArtifact(exe);
             if (b.args) |args| run.addArgs(args);
-            const step = b.step(exe.name, b.fmt("run '{s}'", .{exe.name}));
+            const step = b.step(exe.name, b.fmt("Run {s}", .{exe.name}));
             step.dependOn(&run.step);
         }
     }
@@ -620,7 +620,7 @@ pub fn build(b: *std.Build) !void {
 
         const run = b.addRunArtifact(exe);
         if (b.args) |args| run.addArgs(args);
-        const step = b.step(exe.name, b.fmt("run '{s}'", .{exe.name}));
+        const step = b.step(exe.name, b.fmt("Run {s}", .{exe.name}));
         step.dependOn(&run.step);
     }
 
@@ -657,7 +657,7 @@ pub fn build(b: *std.Build) !void {
 
         const run = b.addRunArtifact(exe);
         if (b.args) |args| run.addArgs(args);
-        const step = b.step(exe.name, b.fmt("run '{s}'", .{exe.name}));
+        const step = b.step(exe.name, b.fmt("Run {s}", .{exe.name}));
         step.dependOn(&run.step);
     }
 
@@ -694,7 +694,7 @@ pub fn build(b: *std.Build) !void {
 
         const run = b.addRunArtifact(exe);
         if (b.args) |args| run.addArgs(args);
-        const step = b.step(exe.name, b.fmt("run '{s}'", .{exe.name}));
+        const step = b.step(exe.name, b.fmt("Run {s}", .{exe.name}));
         step.dependOn(&run.step);
     }
 
@@ -723,7 +723,7 @@ pub fn build(b: *std.Build) !void {
 
         const run = b.addRunArtifact(exe);
         if (b.args) |args| run.addArgs(args);
-        const step = b.step(exe.name, b.fmt("run '{s}'", .{exe.name}));
+        const step = b.step(exe.name, b.fmt("Run {s}", .{exe.name}));
         step.dependOn(&run.step);
     }
 
@@ -1034,7 +1034,7 @@ pub fn build(b: *std.Build) !void {
 
         const run = b.addRunArtifact(exe);
         if (b.args) |args| run.addArgs(args);
-        const step = b.step(exe.name, b.fmt("run '{s}'", .{exe.name}));
+        const step = b.step(exe.name, b.fmt("Run {s}", .{exe.name}));
         step.dependOn(&run.step);
     }
 
@@ -1138,7 +1138,7 @@ pub fn build(b: *std.Build) !void {
             \\
         );
 
-        const step = b.step("example-c", "");
+        const step = b.step("example-c", "Run src/example.c");
         step.dependOn(&run.step);
     }
 
@@ -1155,7 +1155,7 @@ pub fn build(b: *std.Build) !void {
             \\
         );
 
-        const step = b.step("example-rb", "");
+        const step = b.step("example-rb", "Run src/example.rb");
         step.dependOn(&example_ruby.step);
     }
 
@@ -1172,7 +1172,7 @@ pub fn build(b: *std.Build) !void {
 
         const run = b.addRunArtifact(example_zig);
 
-        const step = b.step("example-zig", "");
+        const step = b.step("example-zig", "Run src/example.zig");
         step.dependOn(&run.step);
     }
 }
