@@ -16,8 +16,8 @@
             .hash = "122085c457dfb74a1b6d62d290c80e71f86885c41c4a92d2f409fd0d07d391d4d6fb",
         },
         .macos_cctools = .{
-            .url = "git+https://github.com/apple-oss-distributions/cctools#cctools-1010.6",
-            .hash = "1220819e38328c2e2735d697e955fb2495eddd3d8a42ff2dd0312fd698f97f93f290",
+            .url = "git+https://github.com/apple-oss-distributions/cctools#cctools-1021.4",
+            .hash = "12209ea0af29188d87d8ea277b5f3d1aebef7d764752d57700f1351f4bf7bdfa24d8",
         },
         .linenoise = .{
             .path = "build/linenoise",
