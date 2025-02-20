@@ -127,15 +127,15 @@ TODO: document creating and using custom gems, using only a subset of the standa
 
 Bug reports and pull requests are welcome at https://github.com/jethrodaniel/mruby.zig
 
-## License
+## Acknowledgements
 
-[MIT](https://spdx.org/licenses/MIT.html), same as [MRuby](https://github.com/mruby/mruby).
-
-## Credits
-
-This project is inspired by https://github.com/dantecatalfamo/mruby-zig (MIT):
+This project was inspired by https://github.com/dantecatalfamo/mruby-zig (MIT):
 
 Some differences:
 
 - we use `@cImport` instead of zig bindings
 - we use `zig build` instead of `rake`
+
+## License
+
+[MIT](https://spdx.org/licenses/MIT.html), same as [MRuby](https://github.com/mruby/mruby).
