@@ -1128,6 +1128,8 @@ pub fn build(b: *std.Build) !void {
         });
         example_c.linkLibrary(mruby_lib);
 
+        b.installArtifact(example_c);
+
         const run = b.addRunArtifact(example_c);
         run.expectExitCode(42);
         run.expectStdOutEqual(
@@ -1153,6 +1155,8 @@ pub fn build(b: *std.Build) !void {
             \\
         );
 
+        b.getInstallStep().dependOn(&example_ruby.step);
+
         const step = b.step("example-rb", "Run src/example.rb");
         step.dependOn(&example_ruby.step);
     }
@@ -1167,6 +1171,8 @@ pub fn build(b: *std.Build) !void {
     });
     {
         example_zig.root_module.addImport("mruby", module);
+
+        b.installArtifact(example_zig);
 
         const run = b.addRunArtifact(example_zig);
 
