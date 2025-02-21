@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: © 2025 Mark Delk <jethrodaniel@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: license check
+        uses: fsfe/reuse-action@v4
+
+      - name: setup zig
+        uses: mlugg/setup-zig@v1
+        with:
+          version: 0.13.0
+
+      - name: zig build
+        run: zig build --summary all
+
+      - name: mruby version
+        run: zig build mruby -- -v
+
+      - name: mruby tests
+        run: zig build mrbtest -- -v
+
+      - name: zig example
+        run: zig build example-zig
