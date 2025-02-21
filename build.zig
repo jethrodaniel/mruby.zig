@@ -1073,15 +1073,13 @@ pub fn build(b: *std.Build) !void {
     //
 
     const translate_c = b.addTranslateC(.{
+        // every header needed to use MRuby, add more as needed
         .root_source_file = b.addWriteFiles().add("input.c",
-        // add more headers as needed
             \\#include <mruby.h>
             \\#include <mruby/compile.h>
             \\#include <mruby/data.h>
             \\#include <mruby/string.h>
             \\#include <mruby/variable.h>
-            \\
-            \\#include <stdio.h>
         ),
         .target = b.host,
         .optimize = .ReleaseFast,
