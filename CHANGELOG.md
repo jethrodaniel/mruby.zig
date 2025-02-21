@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: © 2025 Mark Delk <jethrodaniel@gmail.com>
+
+SPDX-License-Identifier: MIT
+-->
+
 ## [Unreleased]
 
 - TODO
