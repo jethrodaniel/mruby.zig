@@ -45,7 +45,7 @@ zig-out/bin/
 └── mruby-strip
 ```
 
-See `zig build -h` for information about everything available:
+See `zig build -h` for information about everything that's available:
 
 ```
 zig build -h
@@ -89,7 +89,7 @@ Warning: 0
 
 To use `mirb`, `mruby`, etc:
 
-```
+```console
 $ zig build mirb
 mirb - Embeddable Interactive Ruby Shell
 
