@@ -119,7 +119,19 @@ zig build -Doptimize=ReleaseFast -Dtarget=x86_64-linux-gnu
 
 ### Using in a Zig project
 
-See the `example-zig` step in [build.zig](build.zig), and [src/example.zig](src/example.zig).
+Add to your `build.zig.zon`:
+
+```
+zig fetch --save=mruby "git+https://github.com/jethrodaniel/mruby.zig#main"
+```
+
+Then update your `build.zig` like so:
+
+```
+TODO
+```
+
+For more detail, see the `example-zig` step in [build.zig](build.zig), and the example file, [src/example.zig](src/example.zig).
 
 TODO: document creating and using custom gems, using only a subset of the standard library, etc
 
