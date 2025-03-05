@@ -1080,6 +1080,7 @@ pub fn build(b: *std.Build) !void {
             \\#include <mruby/data.h>
             \\#include <mruby/string.h>
             \\#include <mruby/variable.h>
+            \\#include <mruby/array.h>
         ),
         .target = b.host,
         .optimize = .ReleaseFast,
