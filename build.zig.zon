@@ -12,16 +12,16 @@
         "build/linenoise",
     },
     .dependencies = .{
-        .mruby = .{
-            .url = "git+https://github.com/jethrodaniel/mruby?ref=fork#49cb703c04c0b51bca132416f31edeae0f7dcf80",
-            .hash = "122030a914b8c7edd7728a05fb7546013e5413062edfa27e19fda882808a496f3369",
-        },
         .macos_cctools = .{
             .url = "git+https://github.com/apple-oss-distributions/cctools#cctools-1021.4",
             .hash = "12209ea0af29188d87d8ea277b5f3d1aebef7d764752d57700f1351f4bf7bdfa24d8",
         },
         .linenoise = .{
             .path = "build/linenoise",
+        },
+        .mruby = .{
+            .url = "git+https://github.com/jethrodaniel/mruby?ref=fork#3a52c2274a719bc17890a109fc8f8d710a06450c",
+            .hash = "1220f4a8f9987496dd255d901bb75d0c4e17571e58971991a4850e595bbea63aaf9e",
         },
     },
 }
