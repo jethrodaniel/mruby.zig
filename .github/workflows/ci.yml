@@ -4,7 +4,7 @@
 
 name: ci
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   test:
@@ -16,9 +16,9 @@ jobs:
         uses: fsfe/reuse-action@v4
 
       - name: setup zig
-        uses: mlugg/setup-zig@v1
+        uses: mlugg/setup-zig@v2
         with:
-          version: 0.13.0
+          version: 0.14.1
 
       - name: zig build
         run: zig build --summary all

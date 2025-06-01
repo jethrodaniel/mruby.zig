@@ -209,7 +209,7 @@ pub fn build(b: *std.Build) !void {
     });
     const host_mrbc_exe = b.addExecutable(.{
         .name = "host-mrbc",
-        .target = b.host,
+        .target = b.graph.host,
         .optimize = optimize,
     });
     {
@@ -230,7 +230,7 @@ pub fn build(b: *std.Build) !void {
                 .flags = &cflags,
             });
 
-            exe.defineCMacro("MRB_NO_PRESYM", "1");
+            exe.root_module.addCMacro("MRB_NO_PRESYM", "1");
 
             exe.addIncludePath(mruby_dep.path("include"));
             exe.linkLibC();
@@ -263,8 +263,8 @@ pub fn build(b: *std.Build) !void {
             if (target.result.os.tag == .macos) {
                 lib.addIncludePath(macos_dep.path("include"));
             } else if (target.result.os.tag == .linux) {
-                lib.defineCMacro("_XOPEN_SOURCE", "700");
-                lib.defineCMacro("_BSD_SOURCE", "1");
+                lib.root_module.addCMacro("_XOPEN_SOURCE", "700");
+                lib.root_module.addCMacro("_BSD_SOURCE", "1");
             }
 
             lib.addCSourceFiles(.{
@@ -584,7 +584,7 @@ pub fn build(b: *std.Build) !void {
                     lib.linkSystemLibrary("ws2_32");
 
                 for (gem.defines) |define|
-                    lib.defineCMacro(define, "1");
+                    lib.root_module.addCMacro(define, "1");
             }
         }
 
@@ -647,7 +647,7 @@ pub fn build(b: *std.Build) !void {
         exe.linkLibrary(mruby_lib);
 
         if (target.result.os.tag != .windows) {
-            exe.defineCMacro("MRB_USE_LINENOISE", "1");
+            exe.root_module.addCMacro("MRB_USE_LINENOISE", "1");
             exe.linkLibrary(linenoise_dep.artifact("linenoise"));
         }
 
@@ -739,9 +739,9 @@ pub fn build(b: *std.Build) !void {
         // mrbgems/mruby-dir/test/dirtest.c:70:7: error: call to undeclared function 'mkdtemp'; ISO C99 and later do not support implicit function declarations
         if (target.result.os.tag == .linux) {
             if (target.result.abi == .musl) {
-                exe.defineCMacro("_XOPEN_SOURCE", "1");
+                exe.root_module.addCMacro("_XOPEN_SOURCE", "1");
             } else {
-                exe.defineCMacro("_GNU_SOURCE", "1");
+                exe.root_module.addCMacro("_GNU_SOURCE", "1");
             }
         }
 
@@ -1046,22 +1046,22 @@ pub fn build(b: *std.Build) !void {
         mruby_strip_exe,
         mrbtest,
     }) |obj| {
-        obj.defineCMacro("MRB_STR_LENGTH_MAX", b.fmt("{any}", .{MRB_STR_LENGTH_MAX}));
-        obj.defineCMacro("MRB_ARY_LENGTH_MAX", b.fmt("{any}", .{MRB_ARY_LENGTH_MAX}));
+        obj.root_module.addCMacro("MRB_STR_LENGTH_MAX", b.fmt("{any}", .{MRB_STR_LENGTH_MAX}));
+        obj.root_module.addCMacro("MRB_ARY_LENGTH_MAX", b.fmt("{any}", .{MRB_ARY_LENGTH_MAX}));
         if (MRB_NO_GEMS)
-            obj.defineCMacro("MRB_NO_GEMS", "1");
+            obj.root_module.addCMacro("MRB_NO_GEMS", "1");
         if (MRB_NO_PRESYM)
-            obj.defineCMacro("MRB_NO_PRESYM", "1");
+            obj.root_module.addCMacro("MRB_NO_PRESYM", "1");
         if (MRB_UTF8_STRING)
-            obj.defineCMacro("MRB_UTF8_STRING", "1");
+            obj.root_module.addCMacro("MRB_UTF8_STRING", "1");
         if (MRB_DEBUG)
-            obj.defineCMacro("MRB_DEBUG", "1");
+            obj.root_module.addCMacro("MRB_DEBUG", "1");
         if (MRB_USE_DEBUG_HOOK)
-            obj.defineCMacro("MRB_USE_DEBUG_HOOK", "1");
+            obj.root_module.addCMacro("MRB_USE_DEBUG_HOOK", "1");
         if (MRB_NO_STDIO)
-            obj.defineCMacro("MRB_NO_STDIO", "1");
+            obj.root_module.addCMacro("MRB_NO_STDIO", "1");
         if (MRB_INT64)
-            obj.defineCMacro("MRB_INT64", "1");
+            obj.root_module.addCMacro("MRB_INT64", "1");
 
         //  from <mruby/value.h>, <mach-o/getsect.h>
         if (target.result.os.tag == .macos)
@@ -1080,17 +1080,17 @@ pub fn build(b: *std.Build) !void {
             \\#include <mruby/variable.h>
             \\#include <mruby/array.h>
         ),
-        .target = b.host,
+        .target = b.graph.host,
         .optimize = .ReleaseFast,
     });
     {
-        translate_c.addIncludeDir(mruby_dep.path("include").getPath(b));
+        translate_c.addIncludePath(mruby_dep.path("include"));
     }
 
     // TODO: this won't be needed after translate-c supports bitfields
     const fix_translation_exe = b.addExecutable(.{
         .name = "fix-translation",
-        .target = b.host,
+        .target = b.graph.host,
         .optimize = .ReleaseFast,
         .root_source_file = b.path("src/fix_translation.zig"),
     });

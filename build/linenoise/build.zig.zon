@@ -3,7 +3,8 @@
 // SPDX-License-Identifier: MIT
 
 .{
-    .name = "linenoise",
+    .name = .linenoise,
+    .fingerprint = 0x2bc115ebcfc69e84,
     .version = "0.0.0",
     .paths = .{
         "build.zig",

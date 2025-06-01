@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: © 2025 Mark Delk <jethrodaniel@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+# linenoise's `example.c`: https://github.com/antirez/linenoise/blob/d895173d679be70bcd8b23041fff3e458e1a3506/example.c#L53
+history.txt

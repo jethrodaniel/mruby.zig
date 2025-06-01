@@ -43,7 +43,7 @@ pub fn main() !void {
         // logger.debug("{s}", .{line});
 
         if (std.mem.eql(u8, line, "    gc: mrb_gc = @import(\"std\").mem.zeroes(mrb_gc),")) {
-            _ = try writer.write("    gc: u128 = @import(\"std\").mem.zeroes([128]i1),");
+            _ = try writer.write("    gc: u128 = @import(\"std\").mem.zeroes(u128),");
         } else {
             _ = try writer.write(line);
         }
