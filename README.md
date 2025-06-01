@@ -18,6 +18,8 @@ This project builds MRuby from source, only using Zig.
 
 This means we emulate MRuby's non-trivial Rake-based build process entirely in Zig.
 
+**NOTE**: We only support zig 0.13.0 at the moment.
+
 ## Issues
 
 - Non-standard library gems that use any Ruby logic in their `mrbgem.rake` files aren't supported
@@ -37,6 +39,8 @@ zig build
 ```
 $ tree zig-out/bin/
 zig-out/bin/
+├── example-c
+├── example-zig
 ├── host-mrbc
 ├── mirb
 ├── mrbc
