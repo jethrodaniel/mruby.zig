@@ -280,8 +280,6 @@ pub fn build(b: *std.Build) !void {
                 mrbc_cmd.addArgs(&.{ "-B", "mrblib_irep", "-o" });
                 const mrblib_rbfiles_c = mrbc_cmd.addOutputFileArg("mrblib_rbfiles.c");
                 for ([_][]const u8{
-                    "mrblib/00class.rb",
-                    "mrblib/00kernel.rb",
                     "mrblib/10error.rb",
                     "mrblib/array.rb",
                     "mrblib/compar.rb",
@@ -713,7 +711,7 @@ pub fn build(b: *std.Build) !void {
                 // "mrbgems/mruby-compiler/core/y.tab.c",
                 // "mrbgems/mruby-compiler/core/codegen.c",
 
-                "mrbgems/mruby-bin-strip/tools/mruby-strip/mruby-strip.c",
+                "mrbgems/mruby-bin-strip/tools/mruby-strip/mruby_strip.c",
             },
             .flags = &cflags,
         });
@@ -870,7 +868,7 @@ pub fn build(b: *std.Build) !void {
 
             if (gem.test_rbfiles.len > 0) {
                 try gem_test_content.appendSlice(b.fmt(
-                    \\  mrb_state *mrb2 = mrb_open_core(mrb_default_allocf, NULL);
+                    \\  mrb_state *mrb2 = mrb_open_core();
                     \\  if (mrb2 == NULL) {{
                     \\    fprintf(stderr, "Invalid mrb_state, exiting %s", __func__);
                     \\    exit(EXIT_FAILURE);
@@ -1150,8 +1148,8 @@ pub fn build(b: *std.Build) !void {
         example_ruby.addArgs(&.{"-r"});
         example_ruby.addFileArg(b.path("src/example.rb"));
         example_ruby.expectStdOutEqual(
-            \\mruby 3.3.0 (2024-02-14)
-            \\mruby - Copyright (c) 2010-2024 mruby developers
+            \\mruby 3.4.0 (2025-04-20)
+            \\mruby - Copyright (c) 2010-2025 mruby developers
             \\#<Example:42>
             \\
         );
@@ -1348,7 +1346,7 @@ const builtin_gems = [_]Mgem{
     },
     Mgem{
         .name = "mruby_exit",
-        .srcs = &.{"mrbgems/mruby-exit/src/mruby-exit.c"},
+        .srcs = &.{"mrbgems/mruby-exit/src/mruby_exit.c"},
         .test_rbfiles = &.{}, // TODO: missing spec coverage
     },
     Mgem{
@@ -1358,7 +1356,7 @@ const builtin_gems = [_]Mgem{
     },
     Mgem{
         .name = "mruby_hash_ext",
-        .srcs = &.{"mrbgems/mruby-hash-ext/src/hash-ext.c"},
+        .srcs = &.{"mrbgems/mruby-hash-ext/src/hash_ext.c"},
         .rbfiles = &.{"mrbgems/mruby-hash-ext/mrblib/hash.rb"},
         .test_rbfiles = &.{"mrbgems/mruby-hash-ext/test/hash.rb"},
         .dependencies = &.{"mruby_array_ext"},
@@ -1420,7 +1418,7 @@ const builtin_gems = [_]Mgem{
         .srcs = &.{"mrbgems/mruby-object-ext/src/object.c"},
         .rbfiles = &.{"mrbgems/mruby-object-ext/mrblib/object.rb"},
         .test_rbfiles = &.{"mrbgems/mruby-object-ext/test/object.rb"},
-        .test_srcs = &.{"mrbgems/mruby-object-ext/test/object-ext.c"},
+        .test_srcs = &.{"mrbgems/mruby-object-ext/test/object_ext.c"},
     },
     Mgem{
         .name = "mruby_objectspace",
@@ -1446,9 +1444,9 @@ const builtin_gems = [_]Mgem{
     },
     Mgem{
         .name = "mruby_proc_binding",
-        .srcs = &.{"mrbgems/mruby-proc-binding/src/proc-binding.c"},
-        .test_rbfiles = &.{"mrbgems/mruby-proc-binding/test/proc-binding.rb"},
-        .test_srcs = &.{"mrbgems/mruby-proc-binding/test/proc-binding.c"},
+        .srcs = &.{"mrbgems/mruby-proc-binding/src/proc_binding.c"},
+        .test_rbfiles = &.{"mrbgems/mruby-proc-binding/test/proc_binding.rb"},
+        .test_srcs = &.{"mrbgems/mruby-proc-binding/test/proc_binding.c"},
         .dependencies = &.{
             "mruby_proc_ext",
             "mruby_binding",

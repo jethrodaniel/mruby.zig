@@ -6,7 +6,9 @@ SPDX-License-Identifier: MIT
 
 ## [Unreleased]
 
-- TODO
+## [0.2.0] - 2025-06-01
+
+- bump to latest mruby (3.4.0), use upstream instead of a fork
 
 ## [0.1.1] - 2025-02-20
 

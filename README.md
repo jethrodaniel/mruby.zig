@@ -98,7 +98,7 @@ $ zig build mirb
 mirb - Embeddable Interactive Ruby Shell
 
 > MRUBY_VERSION
- => "3.3.0"
+ => "3.4.0"
 ```
 
 ### Examples

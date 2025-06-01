@@ -20,8 +20,8 @@
             .path = "build/linenoise",
         },
         .mruby = .{
-            .url = "git+https://github.com/jethrodaniel/mruby?ref=fork#3a52c2274a719bc17890a109fc8f8d710a06450c",
-            .hash = "1220f4a8f9987496dd255d901bb75d0c4e17571e58971991a4850e595bbea63aaf9e",
+            .url = "git+https://github.com/mruby/mruby#9c5d1cdaa9ee2d34cc05523e9eac243e7cb7b2c9",
+            .hash = "12202faa23de993ff59945b8329b263eb885e18424f8a8b609f4c246840b188b37cc",
         },
     },
 }
