@@ -12,7 +12,7 @@ Build [mruby](https://github.com/mruby/mruby) using [zig](https://ziglang.org) (
 
 > Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.
 >
-> --- Jeff Goldblum
+> --- Jeff Goldblum (Jurassic Park, 1993)
 
 This project builds MRuby from source, only using Zig.
 
