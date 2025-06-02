@@ -3,7 +3,8 @@
 // SPDX-License-Identifier: MIT
 
 .{
-    .name = "mruby",
+    .name = .mruby,
+    .fingerprint = 0x4a9e46f0ee99188a,
     .version = "0.0.0",
     .paths = .{
         "src",

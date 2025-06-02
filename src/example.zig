@@ -119,6 +119,9 @@ fn nil_method(mrb: [*c]mruby.mrb_state, self: mruby.mrb_value) callconv(.C) mrub
 //--
 
 const Foo = struct {
+    // NOTE: `@sizeOf(Foo)` must be non-zero for `mrb_malloc`.
+    data: u8 = 0,
+
     const Self = @This();
 
     pub fn init() !Self {
@@ -155,7 +158,11 @@ fn fooFree(mrb: ?*mruby.mrb_state, ptr: ?*anyopaque) callconv(.C) void {
 }
 
 fn fooInitalize(mrb: [*c]mruby.mrb_state, self: mruby.mrb_value) callconv(.C) mruby.mrb_value {
-    const foo: *Foo = @ptrCast(@alignCast(mruby.mrb_realloc(mrb, null, @sizeOf(Foo))));
+    const new_memory = mruby.mrb_malloc_simple(mrb, @sizeOf(Foo)) orelse {
+        @panic("mrb_malloc_simple returned NULL");
+    };
+
+    const foo: *Foo = @ptrCast(@alignCast(new_memory));
     const f = Foo.init() catch @panic("Foo.init()");
     foo.* = @as(*Foo, @ptrCast(@alignCast(@constCast(&f)))).*;
 
