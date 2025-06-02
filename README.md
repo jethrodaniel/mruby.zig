@@ -24,8 +24,7 @@ This means we emulate MRuby's non-trivial Rake-based build process entirely in Z
 
 - Non-standard library gems that use any Ruby logic in their `mrbgem.rake` files aren't supported
 - Symbol preallocation isn't supported (this depends on Ruby regex to create the C files)
-- Using `mruby.zig` in transitive Zig dependencies will likely cause issues (just use it globally in one package for now)
-- We have to fork MRuby just to add back `mrbgems/mruby-compiler/core/y.tab.c`
+- Using `mruby.zig` in transitive Zig dependencies will likely cause issues (just use it globally in one package for now, TODO)
 
 ## Usage
 
