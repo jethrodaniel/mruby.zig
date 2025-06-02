@@ -18,7 +18,7 @@ This project builds MRuby from source, only using Zig.
 
 This means we emulate MRuby's non-trivial Rake-based build process entirely in Zig.
 
-**NOTE**: We only support zig 0.14.1 at the moment.
+**NOTE**: We only support zig `0.14.1` at the moment.
 
 ## Issues
 
