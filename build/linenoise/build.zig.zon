@@ -14,7 +14,7 @@
         // https://github.com/antirez/linenoise (BSD-2-Clause)
         .linenoise = .{
             .url = "git+https://github.com/antirez/linenoise#d895173d679be70bcd8b23041fff3e458e1a3506",
-            .hash = "1220f1e9b8ae57a1ed3c1110f6ccfbcbef26598a99ef225d68e14a863a35355f7abe",
+            .hash = "N-V-__8AAGoRAQDx6biuV6HtPBEQ9sz7y-8mWYqZ7yJdaOFK",
         },
     },
 }

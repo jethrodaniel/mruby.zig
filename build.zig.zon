@@ -14,15 +14,15 @@
     },
     .dependencies = .{
         .macos_cctools = .{
-            .url = "git+https://github.com/apple-oss-distributions/cctools#cctools-1021.4",
-            .hash = "12209ea0af29188d87d8ea277b5f3d1aebef7d764752d57700f1351f4bf7bdfa24d8",
+            .url = "git+https://github.com/apple-oss-distributions/cctools?ref=cctools-1021.4#3406a8e0f9ec28862967217797fe2b9a7b3d10ed",
+            .hash = "N-V-__8AAInF7gCeoK8pGI2H2Oone189GuvvfXZHUtV3APE1",
         },
         .linenoise = .{
             .path = "build/linenoise",
         },
         .mruby = .{
             .url = "git+https://github.com/mruby/mruby#9c5d1cdaa9ee2d34cc05523e9eac243e7cb7b2c9",
-            .hash = "12202faa23de993ff59945b8329b263eb885e18424f8a8b609f4c246840b188b37cc",
+            .hash = "N-V-__8AAAOwQAAvqiPemT_1mUW4MpsmPriF4YQk-Ki2CfTC",
         },
     },
 }
