@@ -6,7 +6,7 @@ SPDX-License-Identifier: MIT
 
 # mruby.zig
 
-Build [mruby](https://github.com/mruby/mruby) using [zig](https://ziglang.org) (no rake!).
+Build [mruby](https://github.com/mruby/mruby) using [zig](https://ziglang.org) `0.14.1` (no rake!).
 
 ## About
 

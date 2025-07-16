@@ -6,6 +6,11 @@ SPDX-License-Identifier: MIT
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-07-15
+
+- update to zig 0.14.1
+- update mruby (still 3.4.0)
+
 ## [0.2.0] - 2025-06-01
 
 - bump to latest mruby (3.4.0), use upstream instead of a fork
