@@ -6,6 +6,7 @@
     .name = .mruby,
     .fingerprint = 0x4a9e46f0ee99188a,
     .version = "0.0.0",
+    .minimum_zig_version = "0.14.1",
     .paths = .{
         "src",
         "build.zig",
