@@ -1236,7 +1236,6 @@ const builtin_gems = [_]Mgem{
     },
     Mgem{
         .name = "mruby_class_ext",
-        .rbfiles = &.{"mrbgems/mruby-class-ext/mrblib/module.rb"},
         .srcs = &.{"mrbgems/mruby-class-ext/src/class.c"},
         .test_rbfiles = &.{
             "mrbgems/mruby-class-ext/test/class.rb",
@@ -1487,6 +1486,7 @@ const builtin_gems = [_]Mgem{
     },
     Mgem{
         .name = "mruby_set",
+        .srcs = &.{"mrbgems/mruby-set/src/set.c"},
         .rbfiles = &.{"mrbgems/mruby-set/mrblib/set.rb"},
         .test_rbfiles = &.{"mrbgems/mruby-set/test/set.rb"},
         .dependencies = &.{
